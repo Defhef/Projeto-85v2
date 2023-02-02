@@ -40,7 +40,17 @@ export default class LoginScreen extends Component {
 
     signIn = async (email, password) => {
         //Insira o código aqui
-    };
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(email,password)
+            .then(() => {
+                this.props.navigation.replace('DashBoard')
+            })
+    
+    .catch(error => {
+        Alert.alert(error.message)
+    })
+}
 
 
     render() {
